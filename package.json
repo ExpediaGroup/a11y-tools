@@ -1,0 +1,129 @@
+{
+  "name": "@vrbo/a11y-tools",
+  "version": "0.1.0",
+  "description": "Helper library with focus accessibility tools: TrackFocus and TrapFocus",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Expedia Group",
+    "email": "oss@expediagroup.com"
+  },
+  "contributors": [
+    "notethis",
+    "jleon"
+  ],
+  "main": "lib/transpiled/index.js",
+  "module": "lib/esm/index.js",
+  "sideEffects": [
+    "*.css",
+    "*.less"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "start:docs": "discovery-build-doc",
+    "start:ssr": "NODE_ENV=production uitk-ssr-harness",
+    "start:silent": "webpack-dev-server",
+    "build": "npm run build:modern && npm run build:esm && npm run build:umd && npm run build:less",
+    "build:esm": "BABEL_ENV=esm babel src --out-dir lib/esm --source-maps",
+    "build:modern": "BABEL_ENV=modern babel src --out-dir lib/transpiled --source-maps",
+    "build:umd": "BABEL_ENV=umd webpack --bail",
+    "build:less": "gulp less",
+    "test": "npm run test:lint && npm run test:style && npm run test:coverage",
+    "test:coverage": "BABEL_ENV=test nyc --check-coverage npm run test:unit",
+    "test:lint": "eslint --color src",
+    "test:style": "stylelint src/**/*.less",
+    "test:unit": "NODE_ENV=test mocha --require ./setup.js --colors --check-leaks src/**/*.test.js"
+  },
+  "nyc": {
+    "branches": 95,
+    "functions": 95,
+    "lines": 95,
+    "statements": 95,
+    "exclude": [
+      "setup.js",
+      "**/*.test.js"
+    ],
+    "colors": true,
+    "reporter": [
+      "text",
+      "text-summary",
+      "html"
+    ],
+    "instrument": false,
+    "sourceMap": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/homeaway/a11y-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/homeaway/a11y-tools/issues"
+  },
+  "engines": {
+    "node": ">=8.9.0",
+    "npm": ">=5.6.0"
+  },
+  "keywords": [
+    "component",
+    "react"
+  ],
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  },
+  "peerDependencies": {
+    "classnames": ">=2.0.0",
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "autoprefixer": "^7.1.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-istanbul": "^5.1.1",
+    "chai": "^4.1.2",
+    "classnames": "^2.0.0",
+    "css-loader": "^1.0.0",
+    "cssnano": "^4.1.4",
+    "enzyme": "^3.4.3",
+    "enzyme-adapter-react-16": "^1.0.0",
+    "eslint": "^5.4.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "file-loader": "^2.0.0",
+    "gulp": "^3.9.0",
+    "gulp-less": "^4.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "12.2.0",
+    "jsdom-global": "3.0.2",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "less-plugin-npm-import": "^2.1.0",
+    "lodash.debounce": "^4.0.8",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "postcss-loader": "^3.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0",
+    "sinon": "^7.0.0",
+    "style-loader": "^0.23.1",
+    "stylelint": "^9.5.0",
+    "stylelint-csstree-validator": "^1.0.6",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "system-bell-webpack-plugin": "^1.0.0",
+    "terser-webpack-plugin": "^1.1.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7",
+    "webpack-merge": "^4.1.4",
+    "webpack-module-analyzer-plugin": "^0.3.0"
+  }
+}

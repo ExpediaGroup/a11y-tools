@@ -1,0 +1,59 @@
+// variables in use here
+@color-link-default: #2474de;
+@white:              #fff;
+
+// Turn off focus on buttons and links
+button:focus,
+.btn:focus,
+a:focus {
+    outline: 0;
+}
+
+// Turn off default focus of Switch toggle
+.switch-toggle::before {
+    visibility: hidden;
+}
+
+// Relative Positioning for elements that need it
+.focus--relative {
+    position: relative;
+}
+
+// Buttons
+.focus--keyboard {
+    outline: 0;
+
+    &:not([role=dialog])::after,
+    & + label .switch-toggle::after {  // special case for Vrbo Switch component
+        display: block;
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: -6px;
+        right: -6px;
+        bottom: -6px;
+        border: 2px solid @color-link-default;
+        border-radius: inherit;
+        opacity: 1;
+        transition: opacity 250ms;
+    }
+}
+
+.focus--keyboard.btn-inverse::after {
+    border-color: @white;
+}
+
+// Links, but not <a> links made to look like buttons
+a.focus--keyboard:not(.btn) {
+    outline: none;
+
+    &::after {
+        position: absolute;
+        display: block;
+        content: '';
+        border: 2px solid @color-link-default;
+        // stylelint-disable
+        border-radius: 4px !important;
+        // stylelint-enable
+    }
+}
