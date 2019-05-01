@@ -55,6 +55,9 @@
     "type": "git",
     "url": "https://github.com/homeaway/a11y-tools.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "bugs": {
     "url": "https://github.com/homeaway/a11y-tools/issues"
   },
