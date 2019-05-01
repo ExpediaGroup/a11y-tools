@@ -1,6 +1,6 @@
 {
   "name": "@vrbo/a11y-tools",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Helper library with focus accessibility tools: TrackFocus and TrapFocus",
   "license": "Apache-2.0",
   "author": {
